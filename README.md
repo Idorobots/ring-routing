@@ -2,6 +2,8 @@
 
 A tiny Clojure library for [Ring](https://github.com/ring-clojure/ring) routing emphasizing simplicity & readability. `ring-routing` gives you fine-grained control over your middleware & routes - you can precisely tell how to dispatch incomming requests.
 
+[![Clojars Project](http://clojars.org/ring-routing/latest-version.svg)](http://clojars.org/ring-routing)
+
 ## Usage
 
 Here's an example routes definition for a simple car API:
