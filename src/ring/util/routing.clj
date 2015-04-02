@@ -6,10 +6,10 @@
   "Creates a request path matching middleware."
   [handler path-part]
   (fn [{:keys [params uri] :as request}]
-    (let [uri-rest (or (:* params) uri)
-          uri-req (assoc request :uri uri-rest)]
-      (if-let [p (clout/route-matches path-part uri-req)]
-        (-> uri-req
+    (let [uri-rest (or (:* params) uri)]
+      (if-let [p (clout/route-matches path-part
+                                      (assoc request :uri uri-rest))]
+        (-> request
             (assoc :params (merge (dissoc params :*) p))
             handler)
         {:status 404

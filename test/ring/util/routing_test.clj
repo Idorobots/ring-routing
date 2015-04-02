@@ -128,3 +128,36 @@
       (is (= (:status b) 200))
       (is (= (:body b) '(:b)))
       (is (= (:status bad) 404)))))
+
+(defn uri-handler [expected]
+  (fn [{:keys [uri]}]
+    (if (= uri expected)
+      {:status 200}
+      {:status 500})))
+
+(deftest request-uri
+  (testing "Path dispatch doesn't change request :uri."
+    (let [a ((--> (route/path "/a/")
+                  (uri-handler "/a/"))
+             (ring/request :get "/a/"))
+          b ((--> (route/path "/b/*")
+                  (uri-handler "/b/a/"))
+             (ring/request :get "/b/a/"))
+          c ((-->(route/path "/c/*")
+                 (route/path "b/a/")
+                 (uri-handler "/c/b/a/"))
+             (ring/request :get "/c/b/a/"))
+          nope ((--> (route/path "/d/")
+                     (route/path "c/b/a/")
+                     (uri-handler "/d/c/b/a/"))
+                (ring/request :get "/d/c/b/a/"))
+          wild ((--> (route/path "/test/*")
+                     (route/path "ok/")         ;; NOTE Removes :* from params.
+                     (route/path "/test/ok/")   ;; NOTE Matches on :uri again.
+                     (uri-handler "/test/ok/")) ;; NOTE A feature, I guess?
+                (ring/request :get "/test/ok/"))]
+      (is (= (:status a) 200))
+      (is (= (:status b) 200))
+      (is (= (:status c) 200))
+      (is (= (:status nope) 404))
+      (is (= (:status wild) 200)))))
