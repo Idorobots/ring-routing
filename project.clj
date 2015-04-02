@@ -1,4 +1,4 @@
-(defproject ring-routing "0.1.0-SNAPSHOT"
+(defproject ring-routing "0.1.1"
   :description "A tiny Ring routing library."
   :url "http://github.com/Idorobots/ring-routing"
   :license {:name "Eclipse Public License"
