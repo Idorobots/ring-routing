@@ -97,7 +97,7 @@
 (deftest malformed---<-test
   (testing "Malformed fork won't compile."
     (is (thrown? IllegalArgumentException
-                 (eval '(--< :a :b :c))))))
+                 (eval '(ring.util.routing/--< :a :b :c))))))
 
 (deftest path-params-test
   (testing "Can use path parameters."
