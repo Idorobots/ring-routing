@@ -1,8 +1,6 @@
-# ring-routing [![Build Status](https://travis-ci.org/Idorobots/ring-routing.svg?branch=master)](https://travis-ci.org/Idorobots/ring-routing)
+# ring-routing [![Build Status](https://travis-ci.org/Idorobots/ring-routing.svg?branch=master)](https://travis-ci.org/Idorobots/ring-routing) [![Clojars Project](https://img.shields.io/clojars/v/ring-routing.svg)](https://clojars.org/ring-routing)
 
 A tiny Clojure library for [Ring](https://github.com/ring-clojure/ring) routing emphasizing simplicity & readability. `ring-routing` gives you fine-grained control over your middleware & routes - you can precisely tell how to dispatch incomming requests.
-
-[![Clojars Project](http://clojars.org/ring-routing/latest-version.svg)](http://clojars.org/ring-routing)
 
 ## Usage
 
