@@ -45,8 +45,8 @@
   ([] nil)
   ([_] (throw (IllegalArgumentException. "'--<' needs even number of parameters!")))
   ([cond fork & rest]
-     (cons `(--> ~cond ~fork)
-           (apply build-forks rest))))
+   (cons `(--> ~cond ~fork)
+         (apply build-forks rest))))
 
 (defn- wrap--< [& forks]
   (fn [request]
