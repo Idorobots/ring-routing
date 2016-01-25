@@ -48,7 +48,7 @@
      (cons `(--> ~cond ~fork)
            (apply build-forks rest))))
 
-(defn wrap--< [& forks]
+(defn- wrap--< [& forks]
   (fn [request]
     (run-with-retry request forks)))
 
@@ -56,5 +56,5 @@
   "Fork - runs several forks in listed order until one
   of them successfully returns a response."
   [& forks]
-  `(wrap--< ~@(apply build-forks forks)))
+  `(~wrap--< ~@(apply build-forks forks)))
 
