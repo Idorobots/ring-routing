@@ -4,6 +4,7 @@ A tiny Clojure library for [Ring](https://github.com/ring-clojure/ring) routing 
 
 ## Usage
 
+See the [API docs](https://idorobots.github.io/ring-routing/).
 Here's an example routes definition for a simple car API:
 
 ``` clojure
